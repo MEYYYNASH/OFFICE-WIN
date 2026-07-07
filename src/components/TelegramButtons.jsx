@@ -236,6 +236,10 @@ export default function TelegramButtons({ settings, lang }) {
         @media (max-width: 768px) {
           .telegram-support-floating {
             bottom: 80px !important;
+            right: 16px !important;
+          }
+          .telegram-help-bubble {
+            display: none !important;
           }
         }
         @keyframes bounce {

@@ -1,5 +1,8 @@
 // Initial seed data for the Premium Microsoft Office & Windows Service website
 
+// Resolve public asset paths correctly for any deployment base (local or GitHub Pages)
+const BASE = import.meta.env.BASE_URL;
+
 const DEFAULT_SERVICES = [
   {
     id: "ms-office-2024",
@@ -9,7 +12,7 @@ const DEFAULT_SERVICES = [
     shortDescription: "Pre-activated crack edition of Office 2024. Includes Word, Excel, PowerPoint, Outlook, and Publisher.",
     description: "Get the complete, cracked version of Microsoft Office 2024 Professional Plus. Lifetime activation with no subscription fees. Clean and stable release. Includes full support for remote setup.",
     price: 2500,
-    image: "/microsoft-office.jpg",
+    image: `${BASE}microsoft-office.jpg`,
     isAvailable: true,
     isNew: true,
     isPopular: true,
@@ -44,7 +47,7 @@ const DEFAULT_SERVICES = [
     shortDescription: "Stable, pre-activated cracked Microsoft Office suite for lifetime use.",
     description: "Microsoft Office 2021 Professional Plus cracked edition provides classic Office apps for families and businesses. Installed on your PC with permanent activation.",
     price: 2500,
-    image: "/microsoft-office.jpg",
+    image: `${BASE}microsoft-office.jpg`,
     isAvailable: true,
     isNew: false,
     isPopular: true,
@@ -78,7 +81,7 @@ const DEFAULT_SERVICES = [
     shortDescription: "Permanent activation for Windows 11 Pro using digital license tools.",
     description: "Activate your Windows 11 Pro system permanently. We bypass Microsoft account blocks and apply a lifetime digital crack activation so your system gets all future updates.",
     price: 2500,
-    image: "/windows-license.jpg",
+    image: `${BASE}windows-license.jpg`,
     isAvailable: true,
     isNew: true,
     isPopular: true,
@@ -112,7 +115,7 @@ const DEFAULT_SERVICES = [
     shortDescription: "Complete cracked collection of Adobe 2024 creative apps including Photoshop & Illustrator.",
     description: "Unlock all Adobe CC programs. No monthly subscriptions, offline activated with lifetime crack. Includes Photoshop, Premiere Pro, Illustrator, After Effects, and Acrobat Pro.",
     price: 2500,
-    image: "/adobe.jpg",
+    image: `${BASE}adobe.jpg`,
     isAvailable: true,
     isNew: true,
     isPopular: true,
@@ -146,7 +149,7 @@ const DEFAULT_SERVICES = [
     shortDescription: "Standalone pre-activated crack version of Adobe XD UI/UX design tool.",
     description: "Adobe XD is the fast & powerful UI/UX design, prototyping, and wireframing tool for websites and mobile apps. Lifetime cracked, runs fully offline without subscription accounts.",
     price: 2500,
-    image: "/adobe.jpg",
+    image: `${BASE}adobe.jpg`,
     isAvailable: true,
     isNew: true,
     isPopular: false,
@@ -178,7 +181,7 @@ const DEFAULT_SERVICES = [
     shortDescription: "Standalone pre-activated crack version of Adobe Photoshop 2024 photo editor.",
     description: "The world's best imaging and graphic design software. Fully cracked with offline capabilities. Create and enhance your photographs, website designs, and 3D artwork.",
     price: 2500,
-    image: "/adobe.jpg",
+    image: `${BASE}adobe.jpg`,
     isAvailable: true,
     isNew: false,
     isPopular: true,
@@ -209,7 +212,7 @@ const DEFAULT_SERVICES = [
     shortDescription: "Standalone pre-activated crack version of Adobe Illustrator vector design tool.",
     description: "The industry-standard vector graphics software lets you create logos, icons, drawings, typography, and illustrations for print, web, interactive, and mobile.",
     price: 2500,
-    image: "/adobe.jpg",
+    image: `${BASE}adobe.jpg`,
     isAvailable: true,
     isNew: false,
     isPopular: true,
@@ -240,7 +243,7 @@ const DEFAULT_SERVICES = [
     shortDescription: "Standalone pre-activated crack version of Adobe Premiere Pro video editor.",
     description: "Professional video editing software. Edit footage in any format, from 8K to virtual reality. Fully cracked lifetime activation for offline projects.",
     price: 2500,
-    image: "/adobe.jpg",
+    image: `${BASE}adobe.jpg`,
     isAvailable: true,
     isNew: false,
     isPopular: true,
@@ -452,20 +455,24 @@ export const getDB = () => {
       servicesUpdated = true;
       s.isHidden = true;
     }
-    // 2. Update Office images to copied resource
-    if ((s.id === "ms-office-2024" || s.id === "ms-office-2021") && s.image.startsWith("https://images.unsplash.com")) {
+    // 2. Update Office images to correct BASE_URL path
+    if ((s.id === "ms-office-2024" || s.id === "ms-office-2021") && !s.image.includes("microsoft-office.jpg")) {
       servicesUpdated = true;
-      s.image = "/microsoft-office.jpg";
+      s.image = `${BASE}microsoft-office.jpg`;
     }
-    // 3. Update Adobe images to copied resource
-    if (s.category === "Adobe" && s.image !== "/adobe.jpg") {
+    if ((s.id === "ms-office-2024" || s.id === "ms-office-2021") && s.image === "/microsoft-office.jpg") {
       servicesUpdated = true;
-      s.image = "/adobe.jpg";
+      s.image = `${BASE}microsoft-office.jpg`;
     }
-    // 4. Update Windows images to copied resource
-    if (s.category === "Windows" && s.image !== "/windows-license.jpg") {
+    // 3. Update Adobe images to correct BASE_URL path
+    if (s.category === "Adobe" && (s.image !== `${BASE}adobe.jpg`)) {
       servicesUpdated = true;
-      s.image = "/windows-license.jpg";
+      s.image = `${BASE}adobe.jpg`;
+    }
+    // 4. Update Windows images to correct BASE_URL path
+    if (s.category === "Windows" && (s.image !== `${BASE}windows-license.jpg`)) {
+      servicesUpdated = true;
+      s.image = `${BASE}windows-license.jpg`;
     }
     // 5. Sync installationTime to "2-4 mins" for all services
     if (s.installationTime !== "2-4 mins") {

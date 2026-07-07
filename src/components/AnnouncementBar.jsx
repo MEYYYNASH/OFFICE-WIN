@@ -46,18 +46,20 @@ export default function AnnouncementBar({ banners }) {
 
       <style>{`
         .announcement-bar-content {
-          animation: marquee-scroll 25s linear infinite;
+          animation: marquee-scroll 22s linear infinite;
+          padding-left: 100%;
         }
         .mobile-only-marquee-duplicate {
           display: inline;
         }
         @keyframes marquee-scroll {
           0% { transform: translate3d(0, 0, 0); }
-          100% { transform: translate3d(-50%, 0, 0); }
+          100% { transform: translate3d(-100%, 0, 0); }
         }
         @media (min-width: 769px) {
           .announcement-bar-content {
             animation: none !important;
+            padding-left: 0 !important;
             display: flex !important;
             justify-content: center;
             width: 100%;

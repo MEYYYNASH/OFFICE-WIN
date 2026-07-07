@@ -17,7 +17,7 @@ export default function Hero({ settings, lang, setCurrentTab, searchInputRef }) 
   return (
     <div style={{
       position: 'relative',
-      padding: '60px 0 40px 0',
+      padding: '40px 0 24px 0',
       background: 'linear-gradient(180deg, var(--accent-light) 0%, transparent 100%)',
       overflow: 'hidden'
     }}>
@@ -182,6 +182,23 @@ export default function Hero({ settings, lang, setCurrentTab, searchInputRef }) 
           ))}
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .hero-wrapper {
+            padding: 24px 0 16px 0 !important;
+          }
+          .hero-badges {
+            gap: 8px !important;
+          }
+          .hero-value-grid {
+            grid-template-columns: 1fr !important;
+            gap: 12px !important;
+            margin-top: 20px !important;
+            padding: 16px !important;
+          }
+        }
+      `}</style>
     </div>
   );
 }
