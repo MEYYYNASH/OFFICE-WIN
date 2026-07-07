@@ -1,0 +1,29 @@
+{
+  "short_name": "ServiceHub",
+  "name": "Office & Windows Service Hub",
+  "description": "Premium remote software installation & activation services",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#0b0b0f",
+  "theme_color": "#006ec1",
+  "display": "standalone",
+  "orientation": "portrait"
+}
