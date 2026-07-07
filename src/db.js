@@ -6,7 +6,7 @@ const BASE = import.meta.env.BASE_URL;
 const DEFAULT_SERVICES = [
   {
     id: "ms-office-2024",
-    name: "Microsoft Office 2024 Pro Plus (Crack Edition)",
+    name: "Office 2024 Pro Plus (Crack)",
     category: "Microsoft Office",
     version: "2024 v2408",
     shortDescription: "Pre-activated crack edition of Office 2024. Includes Word, Excel, PowerPoint, Outlook, and Publisher.",
@@ -41,7 +41,7 @@ const DEFAULT_SERVICES = [
   },
   {
     id: "ms-office-2021",
-    name: "Microsoft Office 2021 Pro Plus (Crack Edition)",
+    name: "Office 2021 Pro Plus (Crack)",
     category: "Microsoft Office",
     version: "2021 LTSC",
     shortDescription: "Stable, pre-activated cracked Microsoft Office suite for lifetime use.",
@@ -75,7 +75,7 @@ const DEFAULT_SERVICES = [
   },
   {
     id: "windows-11-pro",
-    name: "Windows 11 Professional (Crack Activation)",
+    name: "Windows 11 Pro (Crack)",
     category: "Windows",
     version: "24H2 Pro",
     shortDescription: "Permanent activation for Windows 11 Pro using digital license tools.",
@@ -109,7 +109,7 @@ const DEFAULT_SERVICES = [
   },
   {
     id: "adobe-creative-cloud-2024",
-    name: "Adobe Creative Cloud Suite 2024 (Pre-Activated)",
+    name: "Adobe CC Suite 2024 (Crack)",
     category: "Adobe",
     version: "2024 Pre-Activated",
     shortDescription: "Complete cracked collection of Adobe 2024 creative apps including Photoshop & Illustrator.",
@@ -143,7 +143,7 @@ const DEFAULT_SERVICES = [
   },
   {
     id: "adobe-xd",
-    name: "Adobe XD 2024 (Pre-Activated)",
+    name: "Adobe XD 2024 (Crack)",
     category: "Adobe",
     version: "v57.1.12",
     shortDescription: "Standalone pre-activated crack version of Adobe XD UI/UX design tool.",
@@ -175,7 +175,7 @@ const DEFAULT_SERVICES = [
   },
   {
     id: "adobe-photoshop",
-    name: "Adobe Photoshop 2024 (Pre-Activated)",
+    name: "Photoshop 2024 (Crack)",
     category: "Adobe",
     version: "v25.9",
     shortDescription: "Standalone pre-activated crack version of Adobe Photoshop 2024 photo editor.",
@@ -206,7 +206,7 @@ const DEFAULT_SERVICES = [
   },
   {
     id: "adobe-illustrator",
-    name: "Adobe Illustrator 2024 (Pre-Activated)",
+    name: "Illustrator 2024 (Crack)",
     category: "Adobe",
     version: "v28.5",
     shortDescription: "Standalone pre-activated crack version of Adobe Illustrator vector design tool.",
@@ -237,7 +237,7 @@ const DEFAULT_SERVICES = [
   },
   {
     id: "adobe-premiere-pro",
-    name: "Adobe Premiere Pro 2024 (Pre-Activated)",
+    name: "Premiere Pro 2024 (Crack)",
     category: "Adobe",
     version: "v24.4",
     shortDescription: "Standalone pre-activated crack version of Adobe Premiere Pro video editor.",
@@ -478,6 +478,12 @@ export const getDB = () => {
     if (s.installationTime !== "2-4 mins") {
       servicesUpdated = true;
       s.installationTime = "2-4 mins";
+    }
+    // 6. Sync names with DEFAULT_SERVICES to shorten them
+    const defaultItem = DEFAULT_SERVICES.find(def => def.id === s.id);
+    if (defaultItem && s.name !== defaultItem.name) {
+      servicesUpdated = true;
+      s.name = defaultItem.name;
     }
     return s;
   });
