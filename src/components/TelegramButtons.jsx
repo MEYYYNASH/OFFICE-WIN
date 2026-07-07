@@ -41,6 +41,7 @@ export default function TelegramButtons({ settings, lang }) {
       {/* Help Prompt Bubble (shows initially) */}
       {!isOpen && (
         <div 
+          className="telegram-help-bubble"
           style={{
             backgroundColor: 'var(--bg-secondary)',
             border: '1px solid var(--border-color)',

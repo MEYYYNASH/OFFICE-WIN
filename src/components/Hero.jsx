@@ -17,11 +17,11 @@ export default function Hero({ settings, lang, setCurrentTab, searchInputRef }) 
   return (
     <div style={{
       position: 'relative',
-      padding: '40px 0 24px 0',
+      padding: '24px 0 16px 0',
       background: 'linear-gradient(180deg, var(--accent-light) 0%, transparent 100%)',
       overflow: 'hidden'
     }}>
-      <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '32px', textAlign: 'center', position: 'relative', zIndex: 2 }}>
+      <div className="container hero-grid" style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px', textAlign: 'center', position: 'relative', zIndex: 2 }}>
         
         {/* Banner badges */}
         <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '12px' }}>
@@ -157,7 +157,7 @@ export default function Hero({ settings, lang, setCurrentTab, searchInputRef }) 
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
             gap: '20px',
-            marginTop: '40px',
+            marginTop: '8px',
             padding: '24px',
             backgroundColor: 'var(--bg-secondary)',
             borderRadius: 'var(--radius-lg)',
@@ -185,17 +185,14 @@ export default function Hero({ settings, lang, setCurrentTab, searchInputRef }) 
 
       <style>{`
         @media (max-width: 768px) {
+          .hero-grid {
+            gap: 12px !important;
+          }
           .hero-wrapper {
-            padding: 24px 0 16px 0 !important;
+            padding: 16px 0 8px 0 !important;
           }
           .hero-badges {
             gap: 8px !important;
-          }
-          .hero-value-grid {
-            grid-template-columns: 1fr !important;
-            gap: 12px !important;
-            margin-top: 20px !important;
-            padding: 16px !important;
           }
         }
       `}</style>
